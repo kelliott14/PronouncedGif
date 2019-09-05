@@ -26,7 +26,7 @@ $(document).ready(function(){
                 var gifDiv = $("<li>");
 
                 gifDiv.html("<a>" + gifs[i] + "</a>")
-                gifDiv.attr("searchWord", gifs[i]);
+                gifDiv.attr("searchword", gifs[i]);
                 $(".searchButtons").append(gifDiv);           
             
             }
@@ -42,37 +42,35 @@ $(document).ready(function(){
     });
 
 
-    $(".searchButtons").on("click", function(){
-        var keyword = $(this).attr("searchWord");
+    $("li").on("click", function(){
+        var keyword = $(this).attr("searchword");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + keyword + "&api_key=Ew082cXq1TZjBFYEChwkSaW7PTDz3gjn&limit=10";
 
             $.ajax({
                 url: queryURL,
                 method: "GET"
               })
-
+             
               .then(function(response) {
                 
                   console.log(response)
                 
-                for (var i = 0; i < 11; i++){
+                for (var i = 0; i < 10; i++){
                     var stillImg = response.data[i].images.original_still.url;
-                    var moveImg = response.data[i].url;
+                   // var moveImg = response.data[i].url;
                     var cardDiv = $("<div>");
 
                     $(cardDiv).addClass("card");
                     $(cardDiv).html("<img src=" + stillImg + ">");
                     $(cardDiv).attr("move-still","still");
                     
-                    $(".card-columns").append(cardDiv);
+                    $(".card-columns").prepend(cardDiv);
 
                 }
     })
     
     });
-                
-        
-
+    
     
 
 
