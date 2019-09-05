@@ -31,7 +31,7 @@ $(document).ready(function(){
             
             }
 
-        }
+    }
     
 
     $("#addSearch").on("click", function(){
@@ -53,24 +53,45 @@ $(document).ready(function(){
              
               .then(function(response) {
                 
-                  console.log(response)
-                
                 for (var i = 0; i < 10; i++){
                     var stillImg = response.data[i].images.original_still.url;
-                   // var moveImg = response.data[i].url;
+                    var moveImg = response.data[i].images.original.url;
                     var cardDiv = $("<div>");
 
                     $(cardDiv).addClass("card");
-                    $(cardDiv).html("<img src=" + stillImg + ">");
-                    $(cardDiv).attr("move-still","still");
+                    var gifImg = $("<img src=" + stillImg + ">");
                     
+                    $(gifImg).attr("move-still","still");
+                    $(gifImg).attr("moveSrc", moveImg);
+                    $(gifImg).attr("stillSrc", stillImg);
+                    $(gifImg).addClass("gifCard")
+                    $(cardDiv).html(gifImg)
+
                     $(".card-columns").prepend(cardDiv);
 
                 }
+            
     })
     
     });
     
+    $(".card-columns").on("click", ".gifCard", function(){
+        
+
+        var state = $(this).attr("move-still")
+        console.log(state)
+        
+        if (state == "still"){
+            $(this).attr("src", $(this).attr("moveSrc"));
+            $(this).attr("move-still","move")
+        
+        }else if (state == "move"){
+            $(this).attr("src", $(this).attr("stillSrc"));
+            $(this).attr("move-still", "still");
+        }
+
+        
+    });
     
 
 
