@@ -13,21 +13,28 @@
     <div id="wrapper" >
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
+            <ul class="sidebar-nav searchButtons">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
+
         </div>
         
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-4">
                         <a href="#" class="btn" id="menu-toggle">Search</a>
                     </div>
+                    <div class="col-lg-8">
+                        <input type="searchOption" class="form-control" id="searchInput" placeholder="Add Search Option">
+                        <button type="addSearch" class="btn btn-primary mb-2" id="addSearch">Add</button>
+                    </div>
                 </div>
+            </div>
+
                 <div class="row">
                     <div class="col-lg-12 favGifsBox">
                         <div class="card">

@@ -52,10 +52,12 @@
   .sidebar-nav li a {
     display:block;
     text-decoration:none;
-    color:#ddd;
+    color: white;
   }
   
   .sidebar-nav li:hover{
     background:#846bab;
   }
   
+  
+  }
