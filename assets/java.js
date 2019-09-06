@@ -42,7 +42,7 @@ $(document).ready(function(){
     });
 
 
-    $("li").on("click", function(){
+    $(".searchButtons").on("click", "li", function(){
         var keyword = $(this).attr("searchword");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + keyword + "&api_key=Ew082cXq1TZjBFYEChwkSaW7PTDz3gjn&limit=10";
 
@@ -52,7 +52,7 @@ $(document).ready(function(){
               })
              
               .then(function(response) {
-                
+                console.log(response)
                 for (var i = 0; i < 10; i++){
                     var stillImg = response.data[i].images.original_still.url;
                     var moveImg = response.data[i].images.original.url;
