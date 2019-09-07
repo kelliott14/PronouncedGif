@@ -5,20 +5,22 @@ $(document).ready(function(){
       $("#wrapper").toggleClass("menuDisplayed");
     });
 
+    //Variables
     var gifs = ["cats", "dogs"];
     var favGifs;
-    var searchWord;
 
+    //Resetting the page on load
     function reset(){
         gifs = ["cats","dogs"];
         favGifs = 0;
-        $(".favGifsBox").hide();
+        $(".favRow").hide();
         searchWord = "";
     }
 
     reset();
     loadButtons();
 
+    //loading the search buttons
     function loadButtons(){       
 
             $(".searchButtons").empty();
@@ -28,7 +30,8 @@ $(document).ready(function(){
 
                 gifDiv.html("<a>" + gifs[i] + "</a>")
                 gifDiv.attr("searchword", gifs[i]);
-                $(".searchButtons").append(gifDiv);           
+                $(".searchButtons").append(gifDiv); 
+                        
             
             }
 
@@ -93,7 +96,7 @@ $(document).ready(function(){
     
     });
     
-    $(".card-columns").on("click", ".gifImg", function(){
+    $("body").on("click", ".gifImg", function(){
         
 
         var state = $(this).attr("move-still")
@@ -113,7 +116,7 @@ $(document).ready(function(){
 
     //add favourites    
     $(".card-columns").on("click", ".addFavs", function(){
-        $(".favGifsBox").show();
+        $(".favRow").show();
         var newFav = $(this).parent().parent();
         
 
@@ -136,10 +139,10 @@ $(document).ready(function(){
         favGifs--
 
         if(favGifs == 0){
-            $(".favGifsBox").hide();
+            $(".favRow").hide();
         
         }else{
-            $(".favGifsBox").show();
+            $(".favRow").show();
         }
 
     });

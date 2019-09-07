@@ -1,5 +1,6 @@
 body{
   height:100%;
+  background-color: #F5EFED;
 }
 
 
@@ -10,7 +11,7 @@ body{
     width:0;
     height:100%;
     overflow-y:hidden;
-    background: #5b4282;
+    background: #D96C06;
     opacity:0.9;
       transition:all .5s;
       display:flex;
@@ -55,20 +56,24 @@ body{
       padding:10px;
   }
   
+  #addSearch{
+    background-color: #D96C06;
+    border: none;
+  }
 
   .searchButtons {
     display:block;
     text-decoration:none;
-    color: white;
+    color: #F5EFED;
   }
   
   .sidebar-nav li:hover{
-    background:#846bab;
+    background:#BDBF09;
   }
   
   .gifImg{
     width: 250px;
-    height: 200px;
+    height: auto;
     display: block;
   }
   
@@ -94,16 +99,16 @@ body{
     margin-top: 2px;
   }
 
-  #linkInput{
-    background-image: purple;
-  }
-
-  .card-columns {
+   .card-columns {
       column-count: 4;
   }
 
   .favRow{
+    padding-bottom: 10px;
+    background-color: #2292A4;
     margin-bottom: 10px;
+    border-radius: 5px;
+    
   }
   
     @media (max-width: 1133px){
