@@ -106,6 +106,24 @@ body{
     padding-bottom: 10px;
     background-color: #2292A4;
     margin-bottom: 10px;
-    border-radius: 5px;
-    
+    border-radius: 5px; 
   }
+
+  @media (max-width: 1250px) { 
+    .card-columns {
+      column-count: 3;
+    }
+  }
+  
+  @media (max-width: 992px) { 
+    .card-columns {
+      column-count: 2;
+    }
+  }
+
+@media (max-width: 768px) {
+    .card-columns {
+      column-count: 1;
+  }
+   }
+  
