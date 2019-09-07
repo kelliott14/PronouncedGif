@@ -22,6 +22,7 @@ body{
     width: 100%;	
     position: absolute;
     padding:15px;
+    margin-left: 10px;
       transition:all .5s;
   }
   
@@ -31,7 +32,7 @@ body{
   }
   /* Change the width of the sidebar to display it*/
   #wrapper.menuDisplayed #sidebar-wrapper{
-    width:100px;
+    width:150px;
   }
   
   #wrapper.menuDisplayed #page-content-wrapper{
@@ -73,6 +74,7 @@ body{
   
   .favGifCards{
     float: left;
+    width: 250px;
   }
 
 
@@ -95,3 +97,18 @@ body{
   #linkInput{
     background-image: purple;
   }
+
+  .card-columns {
+      column-count: 4;
+  }
+
+  .favRow{
+    margin-bottom: 10px;
+  }
+  
+    @media (max-width: 1133px){
+
+      .card-columns{
+      column-count: 3;
+      }
+    }

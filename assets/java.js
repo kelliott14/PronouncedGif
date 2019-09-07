@@ -119,7 +119,7 @@ $(document).ready(function(){
 
         $(".favGifsBox").append(newFav);
         $(newFav).addClass("favGifCards");
-        $(this).text("Remove from Favourites");
+        $(this).text("Remove");
         $(this).addClass("removeFav");
         favGifs++
 
@@ -145,22 +145,20 @@ $(document).ready(function(){
     });
 
     //copy link
-    $(".card-columns").on("click", ".copyLink", function(){
+    $("body").on("click", ".copyLink", function(){
 
+        $(".copyLink").text("Copy link");
         var thisGifCard = $(this).parent().parent();
         var thisImg = thisGifCard.children("img");
         var thisMoveSrc = thisImg.attr("moveSrc");
         
         var thisURL = $("<input>").val(thisMoveSrc).appendTo("body").select();
-       
-        
-        
+            
         document.execCommand("copy");
         
-       $(this).text("Copied!")
+        $(this).text("Copied!")
 
-
-    $(thisURL).hide();
+        $(thisURL).hide();
     })
 
 
