@@ -35,10 +35,12 @@ $(document).ready(function(){
     
 
     $("#addSearch").on("click", function(){
-        var newOption = $("#searchInput").val();
+        var newOption = $("#searchInput").val().trim();
         gifs.push(newOption);
 
         loadButtons();
+
+        $("#searchInput").val("");
     });
 
 
@@ -65,7 +67,12 @@ $(document).ready(function(){
                     $(gifImg).attr("moveSrc", moveImg);
                     $(gifImg).attr("stillSrc", stillImg);
                     $(gifImg).addClass("gifCard")
+                    
+                    var favLink = $("<a>Add to Favourites</a>");
+                    $(favLink).addClass("card-link addFavs");
+
                     $(cardDiv).html(gifImg)
+                    $(cardDiv).append(favLink)
 
                     $(".card-columns").prepend(cardDiv);
 
@@ -92,7 +99,30 @@ $(document).ready(function(){
 
         
     });
-    
+
+    //add favourites    
+    $(".card-columns").on("click", ".addFavs", function(){
+
+        var newFav = $(this).parent();
+        console.log(newFav)
+
+        $(".favGifsBox").append(newFav);
+        $(newFav).addClass("favGifCards");
+        $(this).text("Remove from Favourites");
+        $(this).addClass("removeFav");
+
+    })
+    //remove favourites    
+    $(".favGifsBox").on("click", ".removeFav", function(){
+
+        var rmFav = $(this).parent();
+
+        $(".card-columns").append(rmFav);
+        $(rmFav).removeClass("favGifCards");
+        $(this).text("Add to Favourites");
+        $(this).removeClass("removeFav");
+
+})
 
 
   });
