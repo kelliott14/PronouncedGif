@@ -49,7 +49,8 @@
       padding:10px;
   }
   
-  .sidebar-nav li a {
+
+  .searchButtons {
     display:block;
     text-decoration:none;
     color: white;
@@ -59,5 +60,7 @@
     background:#846bab;
   }
   
-  
+  .gifCard{
+    width: 250px;
   }
+  
