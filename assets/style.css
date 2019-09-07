@@ -1,3 +1,8 @@
+body{
+  height:100%;
+}
+
+
 /* Sidebar */
 #sidebar-wrapper{
     z-index:1;
@@ -62,8 +67,15 @@
   
   .gifCard{
     width: 250px;
+
   }
   
   .favGifCards{
     float: left;
+    height: 250px;
+    
+  }
+
+  img{
+    height: 200px;
   }

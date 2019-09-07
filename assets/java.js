@@ -6,12 +6,13 @@ $(document).ready(function(){
     });
 
     var gifs = ["cats", "dogs"];
-    var favGifs = [""];
+    var favGifs;
     var searchWord;
 
     function reset(){
         gifs = ["cats","dogs"];
-        favGifs = [""];
+        favGifs = 0;
+        $(".favGifsBox").hide();
         searchWord = "";
     }
 
@@ -102,7 +103,7 @@ $(document).ready(function(){
 
     //add favourites    
     $(".card-columns").on("click", ".addFavs", function(){
-
+        $(".favGifsBox").show();
         var newFav = $(this).parent();
         console.log(newFav)
 
@@ -110,6 +111,7 @@ $(document).ready(function(){
         $(newFav).addClass("favGifCards");
         $(this).text("Remove from Favourites");
         $(this).addClass("removeFav");
+        favGifs++
 
     })
     //remove favourites    
@@ -121,8 +123,17 @@ $(document).ready(function(){
         $(rmFav).removeClass("favGifCards");
         $(this).text("Add to Favourites");
         $(this).removeClass("removeFav");
+        favGifs--
+
+        if(favGifs == 0){
+            $(".favGifsBox").hide();
+        
+        }else{
+            $(".favGifsBox").show();
+        }
 
 })
+
 
 
   });
