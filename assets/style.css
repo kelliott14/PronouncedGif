@@ -65,17 +65,33 @@ body{
     background:#846bab;
   }
   
-  .gifCard{
+  .gifImg{
     width: 250px;
-
+    height: 200px;
+    display: block;
   }
   
   .favGifCards{
     float: left;
-    height: 250px;
-    
   }
 
-  img{
-    height: 200px;
+
+  .addFavs{
+    padding: 5px;
+  }
+
+  .gifCard{
+    width: 250px;
+  }
+
+  .links{
+    padding: 5px;
+  }
+
+  #addSearch{
+    margin-top: 2px;
+  }
+
+  #linkInput{
+    background-image: purple;
   }

@@ -55,25 +55,35 @@ $(document).ready(function(){
               })
              
               .then(function(response) {
-                console.log(response)
+               
                 for (var i = 0; i < 10; i++){
                     var stillImg = response.data[i].images.original_still.url;
                     var moveImg = response.data[i].images.original.url;
                     var cardDiv = $("<div>");
 
-                    $(cardDiv).addClass("card");
+                    $(cardDiv).addClass("card card-img-top gifCard");
+                    $(cardDiv).css({"width": "251px"})
+
                     var gifImg = $("<img src=" + stillImg + ">");
                     
                     $(gifImg).attr("move-still","still");
                     $(gifImg).attr("moveSrc", moveImg);
                     $(gifImg).attr("stillSrc", stillImg);
-                    $(gifImg).addClass("gifCard")
+                    $(gifImg).addClass("gifImg")
                     
                     var favLink = $("<a>Add to Favourites</a>");
                     $(favLink).addClass("card-link addFavs");
 
-                    $(cardDiv).html(gifImg)
-                    $(cardDiv).append(favLink)
+                    var urlLink = $("<a>Copy link</a>");
+                    $(urlLink).addClass("card-link copyLink")
+
+                    var links = $("<div>");
+                    $(links).addClass("card-body links");
+
+                    $(links).append(favLink, urlLink);
+
+                    $(cardDiv).html(gifImg);
+                    $(cardDiv).append(links);
 
                     $(".card-columns").prepend(cardDiv);
 
@@ -83,11 +93,11 @@ $(document).ready(function(){
     
     });
     
-    $(".card-columns").on("click", ".gifCard", function(){
+    $(".card-columns").on("click", ".gifImg", function(){
         
 
         var state = $(this).attr("move-still")
-        console.log(state)
+        
         
         if (state == "still"){
             $(this).attr("src", $(this).attr("moveSrc"));
@@ -104,8 +114,8 @@ $(document).ready(function(){
     //add favourites    
     $(".card-columns").on("click", ".addFavs", function(){
         $(".favGifsBox").show();
-        var newFav = $(this).parent();
-        console.log(newFav)
+        var newFav = $(this).parent().parent();
+        
 
         $(".favGifsBox").append(newFav);
         $(newFav).addClass("favGifCards");
@@ -117,7 +127,7 @@ $(document).ready(function(){
     //remove favourites    
     $(".favGifsBox").on("click", ".removeFav", function(){
 
-        var rmFav = $(this).parent();
+        var rmFav = $(this).parent().parent();
 
         $(".card-columns").append(rmFav);
         $(rmFav).removeClass("favGifCards");
@@ -132,7 +142,26 @@ $(document).ready(function(){
             $(".favGifsBox").show();
         }
 
-})
+    });
+
+    //copy link
+    $(".card-columns").on("click", ".copyLink", function(){
+
+        var thisGifCard = $(this).parent().parent();
+        var thisImg = thisGifCard.children("img");
+        var thisMoveSrc = thisImg.attr("moveSrc");
+        
+        var thisURL = $("<input>").val(thisMoveSrc).appendTo("body").select();
+       
+        
+        
+        document.execCommand("copy");
+        
+       $(this).text("Copied!")
+
+
+    $(thisURL).hide();
+    })
 
 
 
