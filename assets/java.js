@@ -59,6 +59,7 @@ $(document).ready(function(){
             for (var i = 0; i < 10; i++){
                 var stillImg = response.data[i].images.original_still.url;
                 var moveImg = response.data[i].images.original.url;
+                var rating = response.data[i].rating;
                 var cardDiv = $("<div>");
 
                 //creating the card that the gif will sit in
@@ -87,9 +88,15 @@ $(document).ready(function(){
                 $(links).addClass("card-body links");
                 $(links).append(favLink, urlLink);
 
+                //adding the rating in its own div
+                var ratingDiv = $("<div>");
+                $(ratingDiv).addClass("card-body rating");
+                $(ratingDiv).append("Rating: " + rating.toUpperCase());
+
                 //adding the links and the img to the original gif card
                 $(cardDiv).html(gifImg);
                 $(cardDiv).append(links);
+                $(cardDiv).append(ratingDiv);
 
                 //adding the gif card to the DOM
                 $(".card-columns").prepend(cardDiv);
